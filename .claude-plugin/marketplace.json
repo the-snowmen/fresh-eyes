@@ -1,0 +1,17 @@
+{
+  "name": "fresh-eyes",
+  "owner": {
+    "name": "the-snowmen"
+  },
+  "metadata": {
+    "description": "fresh-eyes — persona-based external review for any app."
+  },
+  "plugins": [
+    {
+      "name": "fresh-eyes",
+      "source": ".",
+      "description": "A cast of fictional external users review your running app in a real browser and write honest, isolated feedback.",
+      "version": "0.1.0"
+    }
+  ]
+}

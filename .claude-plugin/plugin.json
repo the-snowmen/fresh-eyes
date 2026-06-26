@@ -1,0 +1,28 @@
+{
+  "name": "fresh-eyes",
+  "displayName": "fresh-eyes",
+  "description": "A cast of fictional external users who open your running app in a real browser, use it, and write honest reviews — what they liked, bugs they hit, and improvements they want. Each persona is isolated from your code, docs, and memory, so the feedback stays uncontaminated.",
+  "version": "0.1.0",
+  "author": {
+    "name": "the-snowmen"
+  },
+  "homepage": "https://github.com/the-snowmen/fresh-eyes",
+  "repository": "https://github.com/the-snowmen/fresh-eyes",
+  "license": "MIT",
+  "keywords": [
+    "review",
+    "personas",
+    "usability",
+    "ux",
+    "accessibility",
+    "user-testing",
+    "browser",
+    "chrome-devtools"
+  ],
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    }
+  }
+}
