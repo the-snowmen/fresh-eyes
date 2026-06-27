@@ -11,17 +11,20 @@ tool access (Bash, Read, Write, git, and the ability to launch subagents). The *
 bundled subagents that can ONLY drive a browser — they never touch the filesystem. Your job is to set
 the stage, run each persona, collect what they return, write it to disk, and synthesize.
 
-## The cast (default: all four)
+## The cast (default: the four below)
 
 | Slug | Lens |
 |---|---|
-| `ada-reyes` | GIS / domain power-user — correctness, accuracy, export |
+| `domain-expert` | **Adaptive** power-user — becomes an SME for the app's field (from the card's Domain) |
 | `marcus-bell` | Non-technical stakeholder — clarity, onboarding, jargon |
 | `priya-nair` | Recruiter / hiring manager — first impression, console health, polish |
 | `dev-okafor` | Accessibility & mobile — keyboard, screen-reader, contrast, touch |
+| `ada-reyes` | *(example)* a concrete GIS analyst — a worked instance of `domain-expert` for spatial apps |
 
-`/fresh-eyes:review` with no args runs all four. The user may name a subset (e.g. `/fresh-eyes:review
-ada-reyes dev-okafor`) or pass `--version <label>` to override the version stamp.
+`/fresh-eyes:review` with no args runs the default four (`domain-expert`, `marcus-bell`, `priya-nair`,
+`dev-okafor`). `domain-expert` adapts to any field; **`ada-reyes` is a shipped example** you can swap in
+for GIS/spatial apps (`/fresh-eyes:review ada-reyes marcus-bell …`) or copy as a model for your own
+named expert. The user may name any subset or pass `--version <label>` to override the version stamp.
 
 ## Where things live
 
@@ -35,6 +38,8 @@ ada-reyes dev-okafor`) or pass `--version <label>` to override the version stamp
 Personas must react like strangers. When you build a persona's task prompt, pass **only**:
 - the app's **public blurb** and a **URL**, the **viewport(s)** to test, the **review template**, the
   **version label**, and that **persona's own prior reviews** (if any).
+- **For `domain-expert` only:** also include the card's **Domain** line, so it can become the right kind
+  of specialist. (The Domain describes the app's field — it's public-facing context, not internals.)
 
 Never pass a persona: the repo's code, `CLAUDE.md`, READMEs, design docs, your own knowledge of how the
 app works, another persona's reviews, or any internal vocabulary. If you know an explanation for a

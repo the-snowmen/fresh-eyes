@@ -34,10 +34,15 @@ on your landing page would have. Their confusion is the data.
 
 | Persona | Lens | Cares about |
 |---|---|---|
-| **Ada Reyes** | Domain power-user (GIS) | Correctness, accuracy, units/CRS, export — "can I trust the numbers?" |
+| **Domain expert** *(adaptive)* | Power-user / SME | Becomes a specialist in **your app's field** (from the card's Domain) — correctness, export, the terms and standards that field lives by |
 | **Marcus Bell** | Non-technical stakeholder | Clarity, onboarding, jargon — "what am I supposed to do here?" |
 | **Priya Nair** | Recruiter / hiring manager | First impression, load speed, console errors, polish — portfolio signal |
 | **Dev Okafor** | Accessibility & mobile | Keyboard nav, screen-reader labels, contrast, touch, responsive layout |
+| **Ada Reyes** *(example)* | Concrete GIS analyst | A worked instance of the domain expert for spatial apps — swap in for GIS, or copy as a model for your own named SME |
+
+The **domain expert** adapts to any field — point fresh-eyes at a tax app and it reviews like an
+accountant; at a GIS app and it reviews like a spatial analyst. The card's **Domain** line tells it who
+to become. **Ada Reyes** ships as a concrete, fully-written example of that pattern for GIS/spatial apps.
 
 Each persona is a deep character with their own goals, pet peeves, and voice — so the reviews read like
 four different humans, not one model wearing hats. [Add your own →](#adding-personas)
@@ -185,6 +190,11 @@ fresh-eyes/
     */templates/         # app-card, review, synthesis, persona, decisions templates
   LICENSE                # MIT
 ```
+
+## Credits
+
+Built by [@the-snowmen](https://github.com/the-snowmen) with **Claude Code** (Claude Opus 4.8) as a
+pair-programming contributor — design, persona authoring, and the review/triage/apply loop.
 
 ## License
 

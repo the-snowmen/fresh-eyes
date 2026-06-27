@@ -10,7 +10,14 @@
 ## Public blurb
 {One short paragraph describing what the app is, the way you'd describe it to a stranger on its landing
 page. Public-facing only. No tech stack internals, no "we use X under the hood", no known-limitation
-excuses. This is the ONLY description a persona sees.}
+excuses. This is the description every persona sees.}
+
+## Domain
+{The field this app serves + what a power user in it cares about — e.g. "GIS / spatial analysis;
+practitioners care about projection correctness, export, and verifiable counts" or "personal finance;
+users care about accuracy, reconciliation, and trust". The `domain-expert` persona reads this and becomes
+a concrete expert from this field. One or two sentences. Leave as "general consumer app" if there's no
+specialist audience.}
 
 ## URLs
 - **Live:** {https://… or "none"}
