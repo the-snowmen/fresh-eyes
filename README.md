@@ -45,10 +45,14 @@ four different humans, not one model wearing hats. [Add your own →](#adding-pe
 ## Requirements
 
 - Claude Code (v2.1.x or newer).
-- A Chromium/Chrome browser on the machine — the plugin bundles the
-  [`chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) server (installed via
-  `npx` on first use), so personas can drive a real browser. No separate setup needed.
+- **A browser MCP — already bundled, nothing to install or configure.** The plugin ships
+  [`chrome-devtools-mcp`](https://github.com/ChromeDevTools/chrome-devtools-mcp) inside its own
+  `plugin.json` (`mcpServers`), so installing the plugin brings the browser engine with it (pulled via
+  `npx` on first use). You do **not** wire up Playwright MCP or any other server yourself — and you don't
+  need a pre-existing browser MCP in your setup. You only need a Chromium/Chrome binary on the machine for
+  it to drive.
 - The target app must be reachable: a live URL, or a local dev server fresh-eyes can start.
+- For `triage`/`apply`: a git repo (fixes land on a branch) and a build/verify command in the app card.
 
 ## Install
 
@@ -68,10 +72,18 @@ The first run in a repo will ask you a few questions to create an **app card**
 (`fresh-eyes/_app.md`) — the app's name, a public blurb, and a URL. After that, just re-run.
 
 ```bash
-/fresh-eyes:review                       # whole cast
+/fresh-eyes:review                       # whole cast reviews the running app
 /fresh-eyes:review ada-reyes dev-okafor  # a subset
 /fresh-eyes:review --version 2026-07-01  # override the version stamp
+
+/fresh-eyes:triage                       # decide fix / defer / won't-fix → a decision doc
+/fresh-eyes:apply                        # implement the keepers on a branch + auto re-review
+/fresh-eyes:loop                         # run the whole cycle hands-off (review→triage→apply→re-review)
 ```
+
+> Updating an existing install to get the new skills: `/plugin update fresh-eyes` (or
+> `/plugin marketplace update fresh-eyes` then reload). The `triage`/`apply`/`loop` skills appear once the
+> plugin is on **v0.2.0+**.
 
 ## What you get
 
@@ -90,6 +102,32 @@ your-app/fresh-eyes/            # gitignored
 
 Each review has a first-person narrative in the persona's voice, 1–5 scores, Liked / Issues /
 Improvements, and — on repeat visits — a **"Since last time"** section.
+
+## Act on the feedback
+
+Reviews are only half the loop. Two companion skills read the feedback and *do something about it* — and
+they are the deliberate **inverse of the personas**: where the personas are walled-off strangers, these
+run as the **internal maintainer** with full repo access (read your `CLAUDE.md`, grep the code, edit
+files, run git and your build). Trusted, opinionated, and allowed to say "no" with a reason.
+
+```bash
+/fresh-eyes:triage   # decide what to do about each finding, then…
+/fresh-eyes:apply    # implement the keepers on a branch + auto re-review
+```
+
+- **`/fresh-eyes:triage`** reads the latest reviews, grounds each finding in your actual code, weighs it
+  against your app's **target audience** (a maintainer-only section of the app card), and writes a
+  decision doc — every finding marked **FIX-now**, **DEFER**, or **WON'T-FIX**, each with a rationale.
+  The WON'T-FIX list is the point: not every piece of feedback is worth implementing, and the doc says
+  so honestly. Edit the verdicts if you disagree.
+- **`/fresh-eyes:apply`** implements the FIX-now items **on a new branch** (`fresh-eyes/fixes-<date>`),
+  builds/verifies, records what shipped, then **auto re-runs `/fresh-eyes:review`** against the branch
+  build so the personas confirm the fixes and the scoreboard updates.
+
+The full loop: **review → triage → apply → (auto) re-review** — strangers find the problems, the
+maintainer decides and fixes, the strangers come back and notice. Both halves are full-auto; the safety is
+that triage and apply are separate steps (read the decision doc between them) and every fix lands on a
+branch you review before merging.
 
 ## The story arc
 
@@ -139,9 +177,12 @@ fresh-eyes/
     marketplace.json     # lets this repo be installed directly as a 1-plugin marketplace
   agents/                # the cast — isolated, browser-only subagents
     ada-reyes.md  marcus-bell.md  priya-nair.md  dev-okafor.md
-  skills/review/
-    SKILL.md             # the /fresh-eyes:review orchestrator
-    templates/           # app-card, review, synthesis, persona templates
+  skills/
+    review/SKILL.md      # /fresh-eyes:review  — personas review the running app (external)
+    triage/SKILL.md      # /fresh-eyes:triage  — decide fix / defer / won't-fix  (internal)
+    apply/SKILL.md       # /fresh-eyes:apply   — implement fixes on a branch + re-review (internal)
+    loop/SKILL.md        # /fresh-eyes:loop    — run the whole cycle hands-off (conductor)
+    */templates/         # app-card, review, synthesis, persona, decisions templates
   LICENSE                # MIT
 ```
 
