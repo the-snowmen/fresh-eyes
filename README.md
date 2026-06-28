@@ -156,7 +156,7 @@ improve. Re-run after changes; that's where the value compounds.
 
 | Guarantee | How it's enforced |
 |---|---|
-| Personas can't read your repo | Each persona subagent's `tools:` is locked to `mcp__plugin_fresh_eyes_chrome_devtools__*` — browser tools only. No Read/Write/Bash/Grep. |
+| Personas can't read your repo | Each persona subagent's `tools:` is locked to `mcp__plugin_fresh-eyes_chrome-devtools__*` — browser tools only. No Read/Write/Bash/Grep. |
 | Personas have no memory | Subagents don't receive the assistant's auto-memory; each starts blank. |
 | Personas don't see internals | The orchestrator passes only your public blurb + a URL — never code, docs, or rationale. |
 | Personas don't contaminate each other | Sequential runs, fresh page + cleared `localStorage` per persona. |

@@ -1,7 +1,7 @@
 ---
 name: your-persona-slug
 description: External reviewer persona — {Name}, a {one-line who} who judges {their lens}. Use when running a fresh-eyes review as the {lens} lens.
-tools: mcp__plugin_fresh_eyes_chrome_devtools__*
+tools: mcp__plugin_fresh-eyes_chrome-devtools__*
 ---
 
 <!--

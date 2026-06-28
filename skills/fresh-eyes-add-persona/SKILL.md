@@ -47,7 +47,7 @@ new agent file:
 
 - **Frontmatter:** `name: <slug>`; `description:` in the standard form — `External reviewer persona —
   {Name}, a {one-line who} who judges {their lens}. Use when running a fresh-eyes review as the {lens}
-  lens.`; **copy the `tools:` line verbatim** (`mcp__plugin_fresh_eyes_chrome_devtools__*`) — it is the
+  lens.`; **copy the `tools:` line verbatim** (`mcp__plugin_fresh-eyes_chrome-devtools__*`) — it is the
   isolation wall.
 - **Body:** fill every `{placeholder}` section (Who you are / Why you opened this / How you explore / Pet
   peeves / What makes you rage-quit / What delights you / Your voice) from the interview, in the

@@ -52,7 +52,7 @@ session (fresh page + cleared localStorage) so it never sees another persona's l
 - Confirm you're in the target repo (a git repo is expected for the version stamp; if not, you'll stamp
   by date only).
 - Confirm the browser MCP is available (this plugin bundles `chrome-devtools`; persona tools are named
-  `mcp__plugin_fresh_eyes_chrome_devtools__*`). If the browser server isn't reachable, tell the user how
+  `mcp__plugin_fresh-eyes_chrome-devtools__*`). If the browser server isn't reachable, tell the user how
   to enable it and stop.
 
 ### 1. App card — find or scaffold
