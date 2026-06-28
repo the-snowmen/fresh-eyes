@@ -85,9 +85,11 @@ The first run in a repo will ask you a few questions to create an **app card**
 /fresh-eyes:fresh-eyes-review ada-reyes dev-okafor  # a subset
 /fresh-eyes:fresh-eyes-review --version 2026-07-01  # override the version stamp
 
-/fresh-eyes:fresh-eyes-triage                       # decide fix / defer / won't-fix → a decision doc
+/fresh-eyes:fresh-eyes-decide                       # decide fix / defer / won't-fix → a decision doc
 /fresh-eyes:fresh-eyes-apply                        # implement the keepers on a branch + auto re-review
-/fresh-eyes:fresh-eyes-loop                         # run the whole cycle hands-off (review→triage→apply→re-review)
+/fresh-eyes:fresh-eyes-apply --continue             # re-apply after editing the decision doc
+/fresh-eyes:fresh-eyes-run                          # run the whole cycle hands-off (review→decide→apply→re-review)
+/fresh-eyes:fresh-eyes-help                         # quick reference: all commands, order, args
 ```
 
 > Updating an existing install to get the new skills: `/plugin update fresh-eyes` (or
@@ -120,11 +122,11 @@ run as the **internal maintainer** with full repo access (read your `CLAUDE.md`,
 files, run git and your build). Trusted, opinionated, and allowed to say "no" with a reason.
 
 ```bash
-/fresh-eyes:fresh-eyes-triage   # decide what to do about each finding, then…
+/fresh-eyes:fresh-eyes-decide   # decide what to do about each finding, then…
 /fresh-eyes:fresh-eyes-apply    # implement the keepers on a branch + auto re-review
 ```
 
-- **`/fresh-eyes:fresh-eyes-triage`** reads the latest reviews, grounds each finding in your actual code, weighs it
+- **`/fresh-eyes:fresh-eyes-decide`** reads the latest reviews, grounds each finding in your actual code, weighs it
   against your app's **target audience** (a maintainer-only section of the app card), and writes a
   decision doc — every finding marked **FIX-now**, **DEFER**, or **WON'T-FIX**, each with a rationale.
   The WON'T-FIX list is the point: not every piece of feedback is worth implementing, and the doc says
@@ -187,11 +189,12 @@ fresh-eyes/
   agents/                # the cast — isolated, browser-only subagents
     ada-reyes.md  marcus-bell.md  priya-nair.md  dev-okafor.md
   skills/
-    review/SKILL.md      # /fresh-eyes:fresh-eyes-review  — personas review the running app (external)
-    triage/SKILL.md      # /fresh-eyes:fresh-eyes-triage  — decide fix / defer / won't-fix  (internal)
-    apply/SKILL.md       # /fresh-eyes:fresh-eyes-apply   — implement fixes on a branch + re-review (internal)
-    loop/SKILL.md        # /fresh-eyes:fresh-eyes-loop    — run the whole cycle hands-off (conductor)
-    */templates/         # app-card, review, synthesis, persona, decisions templates
+    fresh-eyes-review/SKILL.md   # /fresh-eyes:fresh-eyes-review  — personas review the running app (external)
+    fresh-eyes-decide/SKILL.md   # /fresh-eyes:fresh-eyes-decide  — decide fix / defer / won't-fix  (internal)
+    fresh-eyes-apply/SKILL.md    # /fresh-eyes:fresh-eyes-apply   — implement fixes on a branch + re-review (internal)
+    fresh-eyes-run/SKILL.md      # /fresh-eyes:fresh-eyes-run     — run the whole cycle hands-off (conductor)
+    fresh-eyes-help/SKILL.md     # /fresh-eyes:fresh-eyes-help    — quick reference card
+    */templates/                 # app-card, review, synthesis, persona, decisions templates
   LICENSE                # MIT
 ```
 

@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # fresh-eyes: apply the fixes
 
-You are the **maintainer** implementing the decisions from `/fresh-eyes:fresh-eyes-triage`. Full repo access, full
+You are the **maintainer** implementing the decisions from `/fresh-eyes:fresh-eyes-decide`. Full repo access, full
 autonomy — **do not stop to ask the user.** Everything lands on a branch, so it stays reviewable and
 revertible.
 
@@ -16,11 +16,13 @@ revertible.
 Read the newest `./fresh-eyes/_decisions-<version>.md`. Take every item with verdict **FIX-now**.
 **Honor any edits the user made to the doc** — if they flipped a verdict (FIX→WON'T-FIX or vice-versa),
 the doc wins over the original triage. If there's no decision doc, stop and tell the user to run
-`/fresh-eyes:fresh-eyes-triage` first.
+`/fresh-eyes:fresh-eyes-decide` first.
 
 ### 2. Branch
 `git checkout -b fresh-eyes/fixes-<version>` from current HEAD. If the tree is dirty, note it; don't
-sweep unrelated changes into the branch.
+sweep unrelated changes into the branch. **With `--continue`** (re-applying after the user edited the
+decision doc), check out the existing `fresh-eyes/fixes-<version>` branch instead of creating it, and
+implement only the items whose verdict is now FIX-now and that aren't already in the "Applied" table.
 
 ### 3. Implement
 Work through the "Fix plan" in the doc, item by item. Use each item's named files + approach. Reuse
@@ -57,4 +59,7 @@ rejected and why · how to review/merge the branch.
 ## Notes
 - **Branch only.** Never commit fixes to the user's current branch or push without being asked.
 - **Decisions doc is the source of truth.** Don't implement DEFER/WON'T-FIX items, even if tempting.
+- **`--continue`.** `/fresh-eyes:fresh-eyes-apply --continue` re-applies from the current (edited) decision
+  doc onto the existing `fresh-eyes/fixes-<version>` branch — no fresh review/decide needed. Use it after
+  you tweak verdicts in the doc and want only the implementation to re-run.
 - App-agnostic: works in any repo with a `./fresh-eyes/_decisions-*.md`.

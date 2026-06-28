@@ -41,10 +41,12 @@ specialist audience.}
 
 ## Persona notes (optional)
 {Anything a real outside user would legitimately know before arriving — e.g. "linked from a portfolio
-site", "shared as a demo". Keep it to what a stranger would actually know. Leave blank for a cold visit.}
+site", "shared as a demo". Keep it to what a stranger would actually know. Leave blank for a cold visit.
+Public knowledge ONLY — never architecture, schema, tech stack, or known-issue excuses; those leak to the
+personas and break the cold-stranger contract.}
 
 <!-- ============================================================================
-  MAINTAINER-ONLY — read by /fresh-eyes:fresh-eyes-triage and /fresh-eyes:fresh-eyes-apply.
+  MAINTAINER-ONLY — read by /fresh-eyes:fresh-eyes-decide and /fresh-eyes:fresh-eyes-apply.
   NEVER passed to a persona (the review orchestrator only sends the blurb + a URL).
   Put product intent and build commands here freely; personas never see this file.
 ============================================================================ -->

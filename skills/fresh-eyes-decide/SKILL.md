@@ -1,10 +1,10 @@
 ---
-name: fresh-eyes-triage
-description: Read the fresh-eyes persona reviews and decide what to do about each finding — FIX-now, DEFER, or WON'T-FIX — weighed against the app's target audience, grounded in the actual code, with an honest rationale for every "no". Writes a decision doc that /fresh-eyes:fresh-eyes-apply then implements. Invoke explicitly with /fresh-eyes:fresh-eyes-triage.
+name: fresh-eyes-decide
+description: Read the fresh-eyes persona reviews and decide what to do about each finding — FIX-now, DEFER, or WON'T-FIX — weighed against the app's target audience, grounded in the actual code, with an honest rationale for every "no". Writes a decision doc that /fresh-eyes:fresh-eyes-apply then implements. Invoke explicitly with /fresh-eyes:fresh-eyes-decide.
 disable-model-invocation: true
 ---
 
-# fresh-eyes: triage the feedback
+# fresh-eyes: decide what to fix
 
 You are the **maintainer**. This is the inverse of the personas: they are walled-off strangers; you have
 **full repo access** — read `CLAUDE.md`, grep the code, understand the architecture and the product
@@ -46,7 +46,7 @@ When personas conflict, resolve explicitly: name the audience-weighted call and 
 
 ### 5. Write the decision doc
 Write `./fresh-eyes/_decisions-<version>.md` using the structure in
-`${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-triage/templates/decisions.md`:
+`${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-decide/templates/decisions.md`:
 - summary counts (N fix / M defer / K won't-fix),
 - the decision table (`# | Issue | Sev | Hit-by | Verdict | Effort | Target files | Rationale`),
 - a **"Won't-fix, and why"** section (the honest no's — the part the maker most wants),
@@ -58,11 +58,15 @@ Write in a decisive maintainer voice: own the calls, justify the no's, don't hed
 
 ### 6. Report
 Briefly: the counts, the headline FIX items, and the most notable WON'T-FIX (with its reason). Point to
-the doc. Tell the user they can edit verdicts in `_decisions-<version>.md` before running
-`/fresh-eyes:fresh-eyes-apply`.
+the doc.
+
+> 👉 **This is your safety valve.** Open `./fresh-eyes/_decisions-<version>.md` and edit any verdict you
+> disagree with — flip FIX↔WON'T-FIX, drop an item, retarget files — **before** running
+> `/fresh-eyes:fresh-eyes-apply`. Apply honors the edited doc, not the original calls. (Re-run apply with
+> `--continue` if you edit after a first apply.)
 
 ## Notes
-- **You do not edit app code here** — triage only decides and writes the doc. Implementation is
+- **You do not edit app code here** — decide only judges and writes the doc. Implementation is
   `/fresh-eyes:fresh-eyes-apply`.
 - **Honor the project's own rules.** If `CLAUDE.md` defines constraints (scrub gates, "don't add X"),
   factor them into verdicts — e.g. a persona asking for something the project explicitly forbids is a
