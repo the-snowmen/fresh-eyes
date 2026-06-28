@@ -62,7 +62,11 @@ four different humans, not one model wearing hats. [Add your own →](#adding-pe
 ## Install
 
 ```bash
-# add this repo as a plugin marketplace, then install
+# from the snowmen-plugins catalog — one marketplace for all my plugins
+/plugin marketplace add the-snowmen/snowmen-plugins
+/plugin install fresh-eyes@snowmen-plugins
+
+# …or straight from this repo's own marketplace
 /plugin marketplace add the-snowmen/fresh-eyes
 /plugin install fresh-eyes
 ```
