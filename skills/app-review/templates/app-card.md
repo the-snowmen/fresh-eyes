@@ -1,6 +1,6 @@
 <!--
   APP CARD TEMPLATE — fresh-eyes
-  Copied into a target repo as fresh-eyes/_app.md the first time you run /fresh-eyes:review there.
+  Copied into a target repo as fresh-eyes/_app.md the first time you run /fresh-eyes:app-review there.
   This card is read by the ORCHESTRATOR. Only the "Public blurb" + a URL are ever passed to a persona.
   NEVER put internal architecture, schema names, or design rationale here — personas must stay naive.
 -->

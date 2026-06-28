@@ -2,7 +2,7 @@
 
 **A cast of fictional outside users who review your app — honestly, and without ever seeing your code.**
 
-fresh-eyes is a [Claude Code](https://claude.com/claude-code) plugin. Run `/fresh-eyes:review` in any
+fresh-eyes is a [Claude Code](https://claude.com/claude-code) plugin. Run `/fresh-eyes:app-review` in any
 project and a cast of personas opens your running app **in a real browser**, actually uses it, and each
 writes up:
 
@@ -74,20 +74,20 @@ four different humans, not one model wearing hats. [Add your own →](#adding-pe
 Then, from inside any project:
 
 ```bash
-/fresh-eyes:review
+/fresh-eyes:app-review
 ```
 
 The first run in a repo will ask you a few questions to create an **app card**
 (`fresh-eyes/_app.md`) — the app's name, a public blurb, and a URL. After that, just re-run.
 
 ```bash
-/fresh-eyes:review                       # whole cast reviews the running app
-/fresh-eyes:review ada-reyes dev-okafor  # a subset
-/fresh-eyes:review --version 2026-07-01  # override the version stamp
+/fresh-eyes:app-review                       # whole cast reviews the running app
+/fresh-eyes:app-review ada-reyes dev-okafor  # a subset
+/fresh-eyes:app-review --version 2026-07-01  # override the version stamp
 
 /fresh-eyes:triage                       # decide fix / defer / won't-fix → a decision doc
 /fresh-eyes:apply                        # implement the keepers on a branch + auto re-review
-/fresh-eyes:loop                         # run the whole cycle hands-off (review→triage→apply→re-review)
+/fresh-eyes:full-loop                         # run the whole cycle hands-off (review→triage→apply→re-review)
 ```
 
 > Updating an existing install to get the new skills: `/plugin update fresh-eyes` (or
@@ -130,7 +130,7 @@ files, run git and your build). Trusted, opinionated, and allowed to say "no" wi
   The WON'T-FIX list is the point: not every piece of feedback is worth implementing, and the doc says
   so honestly. Edit the verdicts if you disagree.
 - **`/fresh-eyes:apply`** implements the FIX-now items **on a new branch** (`fresh-eyes/fixes-<date>`),
-  builds/verifies, records what shipped, then **auto re-runs `/fresh-eyes:review`** against the branch
+  builds/verifies, records what shipped, then **auto re-runs `/fresh-eyes:app-review`** against the branch
   build so the personas confirm the fixes and the scoreboard updates.
 
 The full loop: **review → triage → apply → (auto) re-review** — strangers find the problems, the
@@ -173,7 +173,7 @@ place only if its review couldn't have come from anyone else.
 
 ## Using it on a different app
 
-fresh-eyes is app-agnostic. In a new repo, run `/fresh-eyes:review`, answer the app-card questions, and
+fresh-eyes is app-agnostic. In a new repo, run `/fresh-eyes:app-review`, answer the app-card questions, and
 the same cast reviews a completely different app — no plugin changes. The starter cast leans toward
 data/GIS tools (Ada); swap or add personas to fit your domain.
 
@@ -187,10 +187,10 @@ fresh-eyes/
   agents/                # the cast — isolated, browser-only subagents
     ada-reyes.md  marcus-bell.md  priya-nair.md  dev-okafor.md
   skills/
-    review/SKILL.md      # /fresh-eyes:review  — personas review the running app (external)
+    review/SKILL.md      # /fresh-eyes:app-review  — personas review the running app (external)
     triage/SKILL.md      # /fresh-eyes:triage  — decide fix / defer / won't-fix  (internal)
     apply/SKILL.md       # /fresh-eyes:apply   — implement fixes on a branch + re-review (internal)
-    loop/SKILL.md        # /fresh-eyes:loop    — run the whole cycle hands-off (conductor)
+    loop/SKILL.md        # /fresh-eyes:full-loop    — run the whole cycle hands-off (conductor)
     */templates/         # app-card, review, synthesis, persona, decisions templates
   LICENSE                # MIT
 ```

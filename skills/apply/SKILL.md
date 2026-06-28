@@ -1,6 +1,6 @@
 ---
 name: apply
-description: Implement the FIX-now items from the latest fresh-eyes decision doc — on a new branch, building/verifying as it goes, recording what shipped, then auto re-running /fresh-eyes:review against the branch build so the personas confirm the fixes and the scoreboard shows the arc. Internal maintainer skill with full repo access. Invoke explicitly with /fresh-eyes:apply.
+description: Implement the FIX-now items from the latest fresh-eyes decision doc — on a new branch, building/verifying as it goes, recording what shipped, then auto re-running /fresh-eyes:app-review against the branch build so the personas confirm the fixes and the scoreboard shows the arc. Internal maintainer skill with full repo access. Invoke explicitly with /fresh-eyes:apply.
 disable-model-invocation: true
 ---
 
@@ -43,12 +43,12 @@ That record is what makes the next review's arc traceable.
 ### 6. Auto re-review (against the fix, not the old deploy)
 The live deploy is still the OLD version, so re-review the BRANCH build:
 1. Start the dev server from the branch (the app card's start command) and wait for the ready signal.
-2. Run `/fresh-eyes:review` pointed at the **local URL**, with a post-fix version label (e.g.
+2. Run `/fresh-eyes:app-review` pointed at the **local URL**, with a post-fix version label (e.g.
    `<version>-postfix`). The personas diff against their pre-fix reviews; the synthesis shows fixed ✓ /
    still-broken and an updated scoreboard.
 
 If the dev server can't start, skip the auto re-review, say so, and tell the user to run
-`/fresh-eyes:review` manually once the branch is running.
+`/fresh-eyes:app-review` manually once the branch is running.
 
 ### 7. Report
 Branch name · what shipped (per finding) · the new scoreboard vs the pre-fix 3.x · what you deferred or

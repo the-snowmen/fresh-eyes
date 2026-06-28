@@ -1,6 +1,6 @@
 ---
-name: loop
-description: Run the whole fresh-eyes cycle end to end, hands-off — review (personas test the app) → triage (decide fix/defer/won't-fix) → apply (implement on a branch) → auto re-review (personas confirm). The conductor that chains the other three skills. Use when you want one command to take feedback all the way to fixed-and-verified. Invoke explicitly with /fresh-eyes:loop.
+name: full-loop
+description: Run the whole fresh-eyes cycle end to end, hands-off — review (personas test the app) → triage (decide fix/defer/won't-fix) → apply (implement on a branch) → auto re-review (personas confirm). The conductor that chains the other three skills. Use when you want one command to take feedback all the way to fixed-and-verified. Invoke explicitly with /fresh-eyes:full-loop.
 disable-model-invocation: true
 ---
 
@@ -27,7 +27,7 @@ So the decision doc IS the bridge between deciding and doing — and you can sto
 
 ## Procedure
 
-1. **Review (unless fresh).** If `./fresh-eyes/` has no review for today's version, run `/fresh-eyes:review`
+1. **Review (unless fresh).** If `./fresh-eyes/` has no review for today's version, run `/fresh-eyes:app-review`
    first. If a current-version review already exists, skip straight to triage (don't burn the browser
    agents twice).
 2. **Triage.** Run `/fresh-eyes:triage` to produce `_decisions-<version>.md`.

@@ -1,6 +1,6 @@
 ---
-name: review
-description: Run a fresh-eyes external-user review. A cast of fictional outside-user personas open the target app in a real browser, use it, and each writes an honest review (liked / issues / improvements / 1–5 scores); then a synthesis with a scoreboard is produced. Personas are isolated from the repo, so feedback stays uncontaminated. Invoke explicitly with /fresh-eyes:review.
+name: app-review
+description: Run a fresh-eyes external-user review. A cast of fictional outside-user personas open the target app in a real browser, use it, and each writes an honest review (liked / issues / improvements / 1–5 scores); then a synthesis with a scoreboard is produced. Personas are isolated from the repo, so feedback stays uncontaminated. Invoke explicitly with /fresh-eyes:app-review.
 disable-model-invocation: true
 ---
 
@@ -21,9 +21,9 @@ the stage, run each persona, collect what they return, write it to disk, and syn
 | `dev-okafor` | Accessibility & mobile — keyboard, screen-reader, contrast, touch |
 | `ada-reyes` | *(example)* a concrete GIS analyst — a worked instance of `domain-expert` for spatial apps |
 
-`/fresh-eyes:review` with no args runs the default four (`domain-expert`, `marcus-bell`, `priya-nair`,
+`/fresh-eyes:app-review` with no args runs the default four (`domain-expert`, `marcus-bell`, `priya-nair`,
 `dev-okafor`). `domain-expert` adapts to any field; **`ada-reyes` is a shipped example** you can swap in
-for GIS/spatial apps (`/fresh-eyes:review ada-reyes marcus-bell …`) or copy as a model for your own
+for GIS/spatial apps (`/fresh-eyes:app-review ada-reyes marcus-bell …`) or copy as a model for your own
 named expert. The user may name any subset or pass `--version <label>` to override the version stamp.
 
 ## Where things live
