@@ -23,6 +23,7 @@ your code/docs, so the feedback stays uncontaminated.
 | `/fresh-eyes:fresh-eyes-decide` | You (maintainer) read the reviews and rule each finding **FIX-now / DEFER / WON'T-FIX**, grounded in the code | `fresh-eyes/_decisions-<date>.md` |
 | `/fresh-eyes:fresh-eyes-apply` | Implements the FIX-now items **on a branch**, builds/verifies, then auto re-reviews to confirm | branch `fresh-eyes/fixes-<date>` + updated scores |
 | `/fresh-eyes:fresh-eyes-run` | **Hands-off:** runs review → decide → apply → re-review in one go | branch + final scoreboard |
+| `/fresh-eyes:fresh-eyes-add-persona` | Interview-and-scaffold a new reviewer persona | `.claude/agents/<slug>.md` |
 | `/fresh-eyes:fresh-eyes-help` | This card | — |
 
 ## Typical flow
@@ -59,5 +60,5 @@ command, viewports) and saves it to `fresh-eyes/_app.md`. After that, just re-ru
 - **Personas see only the public blurb + URL** — never your code, docs, or memory. Their confusion is the data.
 - **The decision doc is your safety valve** — edit verdicts in `_decisions-<date>.md` before `apply`.
 - **Re-runs build the story** — run again after fixes and personas call out what changed; the scoreboard trend is the payoff.
-- **Add a persona:** copy `agents/<slug>.md`, edit it, add the slug to the cast table in the review skill.
+- **Add a persona:** `/fresh-eyes:fresh-eyes-add-persona` interviews you and scaffolds the file (isolation contract intact).
 - Everything is written under `./fresh-eyes/` (gitignored).

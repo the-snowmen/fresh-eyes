@@ -104,5 +104,6 @@ any), and the paths to the new files. Don't paste whole reviews — point to the
 - **Re-runs build the story.** Running again later writes new dated files; personas see their own past
   reviews and call out what you fixed. The scoreboard trend is the payoff — encourage re-runs after
   changes.
-- **Adding personas:** drop a new `agents/<slug>.md` (copy `templates/persona.md`) and add the slug to
-  the cast table above.
+- **Adding personas:** easiest is `/fresh-eyes:fresh-eyes-add-persona` — it interviews you and scaffolds
+  the agent file with the `tools:` isolation line + Operating-rules block intact. Manual: drop a new
+  `agents/<slug>.md` (copy `templates/persona.md`) and add the slug to the cast table above.

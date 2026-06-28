@@ -177,7 +177,13 @@ model for your own field's expert. For a non-GIS app, you usually just let `doma
 
 ## Adding personas
 
-Copy [`skills/fresh-eyes-review/templates/persona.md`](skills/fresh-eyes-review/templates/persona.md) to
+**Easiest:** `/fresh-eyes:fresh-eyes-add-persona` — it interviews you (who they are, the one question they
+obsess over, pet peeves, voice) and writes the agent file with the `tools:` isolation line + Operating-rules
+block intact. By default it lands in your project's `.claude/agents/<slug>.md` (app-specific, survives
+plugin updates; invoke it with `/fresh-eyes:fresh-eyes-review <slug>`); run inside this repo, it offers to
+add to the shipped cast instead.
+
+**Manual:** copy [`skills/fresh-eyes-review/templates/persona.md`](skills/fresh-eyes-review/templates/persona.md) to
 `agents/<your-slug>.md`, write a distinct human (keep the `tools:` line — it's the isolation wall), and
 add the slug to the cast table in [`skills/fresh-eyes-review/SKILL.md`](skills/fresh-eyes-review/SKILL.md). A persona earns its
 place only if its review couldn't have come from anyone else.
@@ -202,6 +208,7 @@ fresh-eyes/
     fresh-eyes-decide/SKILL.md   # /fresh-eyes:fresh-eyes-decide  — decide fix / defer / won't-fix  (internal)
     fresh-eyes-apply/SKILL.md    # /fresh-eyes:fresh-eyes-apply   — implement fixes on a branch + re-review (internal)
     fresh-eyes-run/SKILL.md      # /fresh-eyes:fresh-eyes-run     — run the whole cycle hands-off (conductor)
+    fresh-eyes-add-persona/SKILL.md  # /fresh-eyes:fresh-eyes-add-persona — interview + scaffold a new persona
     fresh-eyes-help/SKILL.md     # /fresh-eyes:fresh-eyes-help    — quick reference card
     */templates/                 # app-card, review, synthesis, persona, decisions templates
   LICENSE                # MIT
