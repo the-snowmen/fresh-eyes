@@ -18,15 +18,18 @@ do next, and what's clearly working. Plain, honest, no praise padding.}
 
 ## Scoreboard
 
-| Reviewer | First impr. | Usability | Recommend | Overall |
-|---|---|---|---|---|
-| {Persona A} | {n} | {n} | {n} | {n} |
-| {Persona B} | {n} | {n} | {n} | {n} |
-| … | | | | |
-| **Average** | **{avg}** | **{avg}** | **{avg}** | **{avg}** |
+| Reviewer | First impr. | Usability | Recommend | Overall | Δ Overall |
+|---|---|---|---|---|---|
+| {Persona A} | {n} | {n} | {n} | {n} | {↑/↓/— vs their last review} |
+| {Persona B} | {n} | {n} | {n} | {n} | {↑/↓/—} |
+| … | | | | | |
+| **Average** | **{avg}** | **{avg}** | **{avg}** | **{avg}** | **{net}** |
+
+<!-- Δ Overall = this persona's overall minus their previous-version overall (↑/↓ with the delta, — if unchanged or first run). Shows WHO moved, not just the average. -->
 
 ### Trend vs previous version
-{Average overall {prev} → {now} ({+/-}). Call out the biggest mover per axis. Omit if first run.}
+{Average overall {prev} → {now} ({+/-}). Call out the biggest mover per axis, and any persona who
+regressed despite fixes. Omit if first run.}
 
 ## Top issues (ranked)
 

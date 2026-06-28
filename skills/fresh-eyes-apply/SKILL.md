@@ -20,7 +20,9 @@ the doc wins over the original triage. If there's no decision doc, stop and tell
 
 ### 2. Branch
 `git checkout -b fresh-eyes/fixes-<version>` from current HEAD. If the tree is dirty, note it; don't
-sweep unrelated changes into the branch. **With `--continue`** (re-applying after the user edited the
+sweep unrelated changes into the branch. **If that branch already exists** (a prior apply for this
+version), don't fail — continue on it if it's an earlier apply of the same decisions, else create
+`fresh-eyes/fixes-<version>-2`; say which you chose. **With `--continue`** (re-applying after the user edited the
 decision doc), check out the existing `fresh-eyes/fixes-<version>` branch instead of creating it, and
 implement only the items whose verdict is now FIX-now and that aren't already in the "Applied" table.
 
@@ -49,8 +51,12 @@ The live deploy is still the OLD version, so re-review the BRANCH build:
    `<version>-postfix`). The personas diff against their pre-fix reviews; the synthesis shows fixed ✓ /
    still-broken and an updated scoreboard.
 
-If the dev server can't start, skip the auto re-review, say so, and tell the user to run
-`/fresh-eyes:fresh-eyes-review` manually once the branch is running.
+If the dev server can't start, skip the auto re-review and say so — then give the user the exact commands
+to re-review later:
+```
+git checkout fresh-eyes/fixes-<version> && <start command from _app.md>
+/fresh-eyes:fresh-eyes-review --version <version>-postfix
+```
 
 ### 7. Report
 Branch name · what shipped (per finding) · the new scoreboard vs the pre-fix 3.x · what you deferred or

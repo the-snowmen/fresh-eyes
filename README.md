@@ -166,6 +166,15 @@ harness. Each persona's prompt explicitly orders it to disregard internal notes 
 an outsider. It's the one isolation that's instructed rather than hard-walled — so keep genuinely secret
 material out of `CLAUDE.md`, as you should anyway.
 
+## The cast — and tailoring it
+
+The default four cover the lenses most apps need: **`domain-expert`** (a power user in your field — it
+adapts to the card's Domain, so it works on any app), **`marcus-bell`** (non-technical clarity),
+**`priya-nair`** (recruiter / first impression), **`dev-okafor`** (accessibility + mobile). **`ada-reyes`**
+is a *shipped example* — a concrete GIS analyst — included to show what a hand-written domain specialist
+looks like; swap it in for spatial apps (`/fresh-eyes:fresh-eyes-review ada-reyes …`) or copy it as a
+model for your own field's expert. For a non-GIS app, you usually just let `domain-expert` adapt.
+
 ## Adding personas
 
 Copy [`skills/fresh-eyes-review/templates/persona.md`](skills/fresh-eyes-review/templates/persona.md) to

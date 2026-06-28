@@ -91,7 +91,7 @@ Personas share one browser, so never run two at once. For each selected slug, in
 - Read every `<slug>/<version>.md` you just wrote, plus the most recent prior `_synthesis-*.md` (for the
   trend), and the template `${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-review/templates/synthesis.md`.
 - Write `./fresh-eyes/_synthesis-<version>.md`: one-paragraph verdict, the **scoreboard** (per-persona
-  axes + averages), **trend vs previous version**, **top issues ranked** by (#personas-hit × max
+  axes + averages, plus each persona's **Δ overall vs their last review**), **trend vs previous version**, **top issues ranked** by (#personas-hit × max
   severity) deduped across personas, **file-ready issue blocks** for the top items, **improvement
   themes**, and **fixed-since-last-version** wins.
 
