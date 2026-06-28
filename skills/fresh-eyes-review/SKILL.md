@@ -1,6 +1,6 @@
 ---
-name: app-review
-description: Run a fresh-eyes external-user review. A cast of fictional outside-user personas open the target app in a real browser, use it, and each writes an honest review (liked / issues / improvements / 1–5 scores); then a synthesis with a scoreboard is produced. Personas are isolated from the repo, so feedback stays uncontaminated. Invoke explicitly with /fresh-eyes:app-review.
+name: fresh-eyes-review
+description: Run a fresh-eyes external-user review. A cast of fictional outside-user personas open the target app in a real browser, use it, and each writes an honest review (liked / issues / improvements / 1–5 scores); then a synthesis with a scoreboard is produced. Personas are isolated from the repo, so feedback stays uncontaminated. Invoke explicitly with /fresh-eyes:fresh-eyes-review.
 disable-model-invocation: true
 ---
 
@@ -21,14 +21,14 @@ the stage, run each persona, collect what they return, write it to disk, and syn
 | `dev-okafor` | Accessibility & mobile — keyboard, screen-reader, contrast, touch |
 | `ada-reyes` | *(example)* a concrete GIS analyst — a worked instance of `domain-expert` for spatial apps |
 
-`/fresh-eyes:app-review` with no args runs the default four (`domain-expert`, `marcus-bell`, `priya-nair`,
+`/fresh-eyes:fresh-eyes-review` with no args runs the default four (`domain-expert`, `marcus-bell`, `priya-nair`,
 `dev-okafor`). `domain-expert` adapts to any field; **`ada-reyes` is a shipped example** you can swap in
-for GIS/spatial apps (`/fresh-eyes:app-review ada-reyes marcus-bell …`) or copy as a model for your own
+for GIS/spatial apps (`/fresh-eyes:fresh-eyes-review ada-reyes marcus-bell …`) or copy as a model for your own
 named expert. The user may name any subset or pass `--version <label>` to override the version stamp.
 
 ## Where things live
 
-- **Templates** (read these from the plugin): `${CLAUDE_PLUGIN_ROOT}/skills/review/templates/`
+- **Templates** (read these from the plugin): `${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-review/templates/`
   — `app-card.md`, `review.md`, `synthesis.md`, `persona.md`.
 - **Outputs** (write these into the *target* repo, never the plugin):
   `./fresh-eyes/_app.md`, `./fresh-eyes/<slug>/<version>.md`, `./fresh-eyes/_synthesis-<version>.md`.
@@ -57,7 +57,7 @@ session (fresh page + cleared localStorage) so it never sees another persona's l
 
 ### 1. App card — find or scaffold
 - Read `./fresh-eyes/_app.md`. If it exists, use it.
-- If it's missing: create `./fresh-eyes/`, copy `${CLAUDE_PLUGIN_ROOT}/skills/review/templates/app-card.md`
+- If it's missing: create `./fresh-eyes/`, copy `${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-review/templates/app-card.md`
   into `./fresh-eyes/_app.md`, and fill it by **asking the user** for: app name, a one-paragraph public
   blurb (landing-page voice, no internals), live URL and/or local URL, the local start command + ready
   signal, viewports to test, and any auth notes. Write the completed card.
@@ -77,7 +77,7 @@ session (fresh page + cleared localStorage) so it never sees another persona's l
 ### 4. Run each persona — SEQUENTIALLY
 Personas share one browser, so never run two at once. For each selected slug, in order:
 1. Read that persona's prior reviews from `./fresh-eyes/<slug>/` (newest first), if any exist.
-2. Read the review template `${CLAUDE_PLUGIN_ROOT}/skills/review/templates/review.md`.
+2. Read the review template `${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-review/templates/review.md`.
 3. Launch the persona subagent (its **agent type is the slug**, e.g. `ada-reyes`). Its task prompt =
    the **public blurb + URL**, the **viewport(s)**, the **review template**, the **version label**, and
    its **own prior reviews** (or "first visit"). Instruct it to start a clean session, use the app for
@@ -89,7 +89,7 @@ Personas share one browser, so never run two at once. For each selected slug, in
 
 ### 5. Synthesize
 - Read every `<slug>/<version>.md` you just wrote, plus the most recent prior `_synthesis-*.md` (for the
-  trend), and the template `${CLAUDE_PLUGIN_ROOT}/skills/review/templates/synthesis.md`.
+  trend), and the template `${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-review/templates/synthesis.md`.
 - Write `./fresh-eyes/_synthesis-<version>.md`: one-paragraph verdict, the **scoreboard** (per-persona
   axes + averages), **trend vs previous version**, **top issues ranked** by (#personas-hit × max
   severity) deduped across personas, **file-ready issue blocks** for the top items, **improvement

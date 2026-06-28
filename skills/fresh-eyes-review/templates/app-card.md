@@ -1,6 +1,6 @@
 <!--
   APP CARD TEMPLATE — fresh-eyes
-  Copied into a target repo as fresh-eyes/_app.md the first time you run /fresh-eyes:app-review there.
+  Copied into a target repo as fresh-eyes/_app.md the first time you run /fresh-eyes:fresh-eyes-review there.
   This card is read by the ORCHESTRATOR. Only the "Public blurb" + a URL are ever passed to a persona.
   NEVER put internal architecture, schema names, or design rationale here — personas must stay naive.
 -->
@@ -44,7 +44,7 @@ specialist audience.}
 site", "shared as a demo". Keep it to what a stranger would actually know. Leave blank for a cold visit.}
 
 <!-- ============================================================================
-  MAINTAINER-ONLY — read by /fresh-eyes:triage and /fresh-eyes:apply.
+  MAINTAINER-ONLY — read by /fresh-eyes:fresh-eyes-triage and /fresh-eyes:fresh-eyes-apply.
   NEVER passed to a persona (the review orchestrator only sends the blurb + a URL).
   Put product intent and build commands here freely; personas never see this file.
 ============================================================================ -->

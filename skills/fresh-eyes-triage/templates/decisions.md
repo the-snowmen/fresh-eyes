@@ -1,7 +1,7 @@
 <!--
   DECISION DOC TEMPLATE — fresh-eyes :triage
   Written to <target-repo>/fresh-eyes/_decisions-<version>.md
-  This doc is the contract /fresh-eyes:apply implements. The maker may edit verdicts before applying.
+  This doc is the contract /fresh-eyes:fresh-eyes-apply implements. The maker may edit verdicts before applying.
 -->
 
 # fresh-eyes decisions — {App Name} · {version}
