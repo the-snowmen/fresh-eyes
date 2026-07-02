@@ -2,7 +2,7 @@
   "name": "fresh-eyes",
   "displayName": "fresh-eyes",
   "description": "A cast of fictional external users who open your running app in a real browser, use it, and write honest reviews — what they liked, bugs they hit, and improvements they want. Each persona is isolated from your code, docs, and memory, so the feedback stays uncontaminated.",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "author": {
     "name": "the-snowmen"
   },
@@ -24,5 +24,19 @@
       "command": "npx",
       "args": ["-y", "chrome-devtools-mcp@latest"]
     }
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/session-start.js\"",
+            "timeout": 5,
+            "statusMessage": "Checking fresh-eyes review state..."
+          }
+        ]
+      }
+    ]
   }
 }

@@ -57,7 +57,7 @@ four different humans, not one model wearing hats. [Add your own →](#adding-pe
   need a pre-existing browser MCP in your setup. You only need a Chromium/Chrome binary on the machine for
   it to drive.
 - The target app must be reachable: a live URL, or a local dev server fresh-eyes can start.
-- For `triage`/`apply`: a git repo (fixes land on a branch) and a build/verify command in the app card.
+- For `decide`/`apply`: a git repo (fixes land on a branch) and a build/verify command in the app card.
 
 ## Install
 
@@ -92,9 +92,9 @@ The first run in a repo will ask you a few questions to create an **app card**
 /fresh-eyes:fresh-eyes-help                         # quick reference: all commands, order, args
 ```
 
-> Updating an existing install to get the new skills: `/plugin update fresh-eyes` (or
-> `/plugin marketplace update fresh-eyes` then reload). The `triage`/`apply`/`loop` skills appear once the
-> plugin is on **v0.2.0+**.
+> Updating an existing install: `claude plugin marketplace update <marketplace>` then
+> `claude plugin update fresh-eyes` — and **restart Claude Code** (hooks and renamed commands are picked
+> up at startup).
 
 ## What you get
 
@@ -109,6 +109,7 @@ your-app/fresh-eyes/            # gitignored
   priya-nair/2026-06-26.md
   dev-okafor/2026-06-26.md
   _synthesis-2026-06-26.md      # scoreboard + ranked issues + trend
+  _decisions-2026-06-26.md      # fix / defer / won't-fix verdicts + the Applied table
 ```
 
 Each review has a first-person narrative in the persona's voice, 1–5 scores, Liked / Issues /
@@ -135,9 +136,9 @@ files, run git and your build). Trusted, opinionated, and allowed to say "no" wi
   builds/verifies, records what shipped, then **auto re-runs `/fresh-eyes:fresh-eyes-review`** against the branch
   build so the personas confirm the fixes and the scoreboard updates.
 
-The full loop: **review → triage → apply → (auto) re-review** — strangers find the problems, the
+The full loop: **review → decide → apply → (auto) re-review** — strangers find the problems, the
 maintainer decides and fixes, the strangers come back and notice. Both halves are full-auto; the safety is
-that triage and apply are separate steps (read the decision doc between them) and every fix lands on a
+that decide and apply are separate steps (read the decision doc between them) and every fix lands on a
 branch you review before merging.
 
 ## The story arc
@@ -151,6 +152,18 @@ and the personas notice:
 
 The synthesis scoreboard tracks the trend version over version — so you can watch the scores climb as you
 improve. Re-run after changes; that's where the value compounds.
+
+## Session awareness
+
+In any repo that already has fresh-eyes state, every Claude Code session opens with a small status
+digest injected automatically — the app name, the newest review version and how stale it is (days +
+commits since), the score trend, how many FIX-now items aren't yet in the Applied table, and the one
+suggested next command. It's a status line, not an action: fresh-eyes never runs a review, decide, or
+apply on its own — reviews are real browser runs and stay strictly user-invoked.
+
+In repos that have never used fresh-eyes the hook prints nothing at all. To disable it entirely, remove
+the `hooks` key from the plugin's `plugin.json` or uninstall the plugin. Requires `node` on PATH; hook
+changes are picked up on Claude Code restart.
 
 ## How isolation actually works
 
@@ -199,10 +212,12 @@ data/GIS tools (Ada); swap or add personas to fit your domain.
 ```
 fresh-eyes/
   .claude-plugin/
-    plugin.json          # manifest + bundled chrome-devtools MCP server
+    plugin.json          # manifest + bundled chrome-devtools MCP server + SessionStart hook
     marketplace.json     # lets this repo be installed directly as a 1-plugin marketplace
+  hooks/
+    session-start.js     # injects the per-repo status digest (silent without fresh-eyes state)
   agents/                # the cast — isolated, browser-only subagents
-    ada-reyes.md  marcus-bell.md  priya-nair.md  dev-okafor.md
+    domain-expert.md  ada-reyes.md  marcus-bell.md  priya-nair.md  dev-okafor.md
   skills/
     fresh-eyes-review/SKILL.md   # /fresh-eyes:fresh-eyes-review  — personas review the running app (external)
     fresh-eyes-decide/SKILL.md   # /fresh-eyes:fresh-eyes-decide  — decide fix / defer / won't-fix  (internal)
@@ -214,10 +229,16 @@ fresh-eyes/
   LICENSE                # MIT
 ```
 
+## Pairs well with
+
+[logbook](https://github.com/the-snowmen/logbook) — an always-on dev journal. A fresh-eyes decision
+doc's WON'T-FIX list is natural material for a `/logbook:logbook-decision` ADR ("we're not fixing X,
+here's why").
+
 ## Credits
 
-Built by [@the-snowmen](https://github.com/the-snowmen) with **Claude Code** (Claude Opus 4.8) as a
-pair-programming contributor — design, persona authoring, and the review/triage/apply loop.
+Built by [@the-snowmen](https://github.com/the-snowmen) with **Claude Code** as a pair-programming
+contributor — design, persona authoring, and the review/decide/apply loop.
 
 ## License
 

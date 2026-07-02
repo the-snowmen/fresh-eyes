@@ -73,6 +73,10 @@ session (fresh page + cleared localStorage) so it never sees another persona's l
 - `version` = today's date `YYYY-MM-DD` (run `date +%F` if unsure), unless the user passed `--version`.
 - If in a git repo, capture `git rev-parse --short HEAD` and include it in each file's header. If the
   working tree is dirty, note `(dirty)` so the stamp isn't misleading.
+- **Overwrite warning:** if `./fresh-eyes/_decisions-<version>.md` already exists for this version label,
+  warn the user before proceeding — re-running the cycle and then `/fresh-eyes:fresh-eyes-decide` will
+  regenerate that doc, losing any hand-edited verdicts. Suggest either backing up the doc or passing
+  `--version <label>-2` (or a `-postfix` label) so the old decisions stay intact.
 
 ### 4. Run each persona — SEQUENTIALLY
 Personas share one browser, so never run two at once. For each selected slug, in order:

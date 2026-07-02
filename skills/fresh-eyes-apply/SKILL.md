@@ -15,7 +15,7 @@ revertible.
 ### 1. Load the decisions
 Read the newest `./fresh-eyes/_decisions-<version>.md`. Take every item with verdict **FIX-now**.
 **Honor any edits the user made to the doc** — if they flipped a verdict (FIX→WON'T-FIX or vice-versa),
-the doc wins over the original triage. If there's no decision doc, stop and tell the user to run
+the doc wins over the original decide verdicts. If there's no decision doc, stop and tell the user to run
 `/fresh-eyes:fresh-eyes-decide` first.
 
 ### 2. Branch
@@ -59,7 +59,7 @@ git checkout fresh-eyes/fixes-<version> && <start command from _app.md>
 ```
 
 ### 7. Report
-Branch name · what shipped (per finding) · the new scoreboard vs the pre-fix 3.x · what you deferred or
+Branch name · what shipped (per finding) · the new scoreboard vs the pre-fix scores · what you deferred or
 rejected and why · how to review/merge the branch.
 
 ## Notes

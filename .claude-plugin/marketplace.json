@@ -10,8 +10,7 @@
     {
       "name": "fresh-eyes",
       "source": "./",
-      "description": "A cast of fictional external users review your running app in a real browser and write honest, isolated feedback.",
-      "version": "0.3.0"
+      "description": "A cast of fictional external users review your running app in a real browser and write honest, isolated feedback — with a decide/apply loop that lands fixes on a branch and re-reviews."
     }
   ]
 }

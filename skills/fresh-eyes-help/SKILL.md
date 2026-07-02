@@ -60,5 +60,8 @@ command, viewports) and saves it to `fresh-eyes/_app.md`. After that, just re-ru
 - **Personas see only the public blurb + URL** — never your code, docs, or memory. Their confusion is the data.
 - **The decision doc is your safety valve** — edit verdicts in `_decisions-<date>.md` before `apply`.
 - **Re-runs build the story** — run again after fixes and personas call out what changed; the scoreboard trend is the payoff.
+- **Session awareness:** in a repo with fresh-eyes state, each session opens with an automatic status
+  digest (last review, trend, pending FIX-now count, suggested next command). It's status only — nothing
+  runs unless you invoke it. Silent in repos without fresh-eyes state.
 - **Add a persona:** `/fresh-eyes:fresh-eyes-add-persona` interviews you and scaffolds the file (isolation contract intact).
 - Everything is written under `./fresh-eyes/` (gitignored).

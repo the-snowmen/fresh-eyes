@@ -1,5 +1,5 @@
 <!--
-  DECISION DOC TEMPLATE — fresh-eyes :triage
+  DECISION DOC TEMPLATE — fresh-eyes-decide
   Written to <target-repo>/fresh-eyes/_decisions-<version>.md
   This doc is the contract /fresh-eyes:fresh-eyes-apply implements. The maker may edit verdicts before applying.
 -->
@@ -43,7 +43,7 @@
 
 ## Applied
 
-<!-- :apply fills this in after implementing, so the arc is traceable. Leave empty after triage. -->
+<!-- :apply fills this in after implementing, so the arc is traceable. Leave empty after decide. -->
 
 | # | Status | Commit | Files changed |
 |---|---|---|---|

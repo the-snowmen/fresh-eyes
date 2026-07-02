@@ -53,14 +53,14 @@ personas and break the cold-stranger contract.}
 
 ## Target audience / non-goals
 - **Audience:** {who this app is really for — e.g. "GIS professionals" / "non-technical managers" /
-  "recruiters viewing a portfolio". This is how triage weighs conflicting persona feedback.}
+  "recruiters viewing a portfolio". This is how /fresh-eyes:fresh-eyes-decide weighs conflicting persona feedback.}
 - **Non-goals:** {things you deliberately are NOT optimizing for — e.g. "not a mobile-first tool",
   "domain jargon is acceptable for this audience". A persona complaint that hits a non-goal is a
   defensible WON'T-FIX.}
 
 ## Build / verify
 ```
-{command(s) triage/apply run to confirm a change is sound — e.g. cd apps/web && npm run build}
+{command(s) decide/apply run to confirm a change is sound — e.g. cd apps/web && npm run build}
 ```
 - **Extra gates:** {any project check that must pass — e.g. a scrub/lint/pre-commit hook. Apply runs
   these and never bypasses them.}

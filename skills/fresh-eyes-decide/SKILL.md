@@ -45,6 +45,12 @@ FIX candidates, identify the concrete file(s) and the smallest change that addre
 When personas conflict, resolve explicitly: name the audience-weighted call and the tradeoff.
 
 ### 5. Write the decision doc
+**Overwrite guard:** if `./fresh-eyes/_decisions-<version>.md` already exists, do not silently
+regenerate it. Since this skill runs autonomously, first copy the existing doc to
+`_decisions-<version>.md.bak` and say so in your report, and carry over ALL its existing verdicts and
+hand-edits (FIX/DEFER/WON'T-FIX flips, dropped rows, retargeted files) unless the new review set brings
+genuinely new evidence — call out anything you changed.
+
 Write `./fresh-eyes/_decisions-<version>.md` using the structure in
 `${CLAUDE_PLUGIN_ROOT}/skills/fresh-eyes-decide/templates/decisions.md`:
 - summary counts (N fix / M defer / K won't-fix),
